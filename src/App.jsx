@@ -1,11 +1,13 @@
 import './App.css';
 import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/home';
+import Tutorial from './pages/tutorial';
 
 function App() {
   return (
     <Routes>
       <Route path ="/" element={<Home/>} />
+      <Route path ="/tutorial" element={<Tutorial/>} />
     </Routes>
   );
 }
