@@ -1,5 +1,4 @@
 import React from 'react';
-import '../App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../style.css';
 
@@ -11,8 +10,10 @@ import { Container, Row, Col, Nav, Navbar, Button, Alert, Breadcrumb, Card, Form
 
 function home() {
   return (
-   <div>Bombs Away</div>
-    
+   <div>
+   <h1>Bombs Away</h1>
+    <Link to ="/tutorial">How to play</Link>
+    </div>
   );
 }
 
