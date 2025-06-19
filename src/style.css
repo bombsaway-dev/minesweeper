@@ -44,7 +44,7 @@ body {
 /* Tutorial page (teammate’s) */
 .tutorialContainer {
   width: 400px;
-  height: 500px;
+  height: 450px;
   padding: 20px;
   background-color: #ffffff;
   border: 2px solid #aaa;
@@ -57,6 +57,7 @@ body {
   margin-bottom: 15px;
   color: #000;
   text-align:center;
+  padding-top:0.5em;
 }
 .tutorialCard{
     width: 100%;
@@ -78,19 +79,19 @@ body {
   align-items: center;
   justify-content: center;
   min-height: 100%; 
-  background-color: #ff8888;
+  background-color: #70b4e5;
 }
 
 
-
 .carouselImg{
-    max-width: 100%;
+    max-width: 80%;
     max-height: 400px;
-    height:300px;
+    height:250px;
     object-fit: contain;
     display: block;
     margin: 0 auto;
     padding:0.5em;
+    
 }
 
 .custom-caption{
@@ -110,6 +111,25 @@ body {
 /* Home links */
 .home-container a {
   margin: 0 0.5rem;
+}
+/* Position the dots */
+.carousel-indicators {
+  bottom: 10px; /* adjust to move up/down */
+  justify-content: center;
+}
+
+/* Style the dots */
+.carousel-indicators [data-bs-target] {
+  width: 12px;
+  height: 12px;
+  background-color: #ccc; /* Inactive color */
+  border-radius: 50%;
+  margin: 0 4px;
+  transition: background-color 0.3s ease;
+}
+
+.carousel-indicators .active {
+  background-color: #444; /* Active dot color */
 }
 
 /* “How to play” link in Game */
