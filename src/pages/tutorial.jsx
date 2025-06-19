@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../style.css';
-import tut1 from '../assets/tut-ss-1.jpg';
+import tut1 from '../assets/tut-ss-1.png';
 import tut2 from '../assets/tut-ss-2.jpg';
 import tut3 from '../assets/ss-tut-3.png';
 import tut4 from '../assets/tut-ss-4.jpg';
@@ -18,9 +18,10 @@ function Tutorial() {
     };
 
   return (
-    <div>
-    <h3>How to play</h3>
+    <div className = "tutorialContainer">
+    
     <Card className = "tutorialCard">
+        <h3>How to play</h3>
     <Carousel activeIndex={index} onSelect={handleSelect} className="carousel">
         <Carousel.Item>
             <img src={tut1} alt="" className = "carouselImg" />
@@ -43,8 +44,7 @@ function Tutorial() {
         <Carousel.Item>
             <img src={tut4} alt="" className = "carouselImg" />
             <div className="custom-caption">
-                <p>Left clicking a bomb ends the game.</p>
-                <p>Flag all the bombs to win!</p>
+                <p>Left clicking a bomb ends the game. Flag all the bombs to win!</p>
             </div>
         </Carousel.Item>
     </Carousel>
