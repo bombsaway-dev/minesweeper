@@ -1,20 +1,13 @@
 import React from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import { Link } from 'react-router-dom';
 import '../style.css';
 
-
-
-
-import { Link } from "react-router-dom";
-import { Container, Row, Col, Nav, Navbar, Button, Alert, Breadcrumb, Card, Form } from 'react-bootstrap';
-
-function home() {
+export default function Home() {
   return (
-   <div>
-   <h1>Bombs Away</h1>
-    <Link to ="/tutorial">How to play</Link>
+    <div className="home-container">
+      <h1>Bombs Away</h1>
+      <Link to="/tutorial">How to play</Link>
+      <Link to="/game">Play Game</Link>
     </div>
   );
 }
-
-export default home;
