@@ -1,94 +1,88 @@
 /* Reset */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* CSS Variables (defaults to grass theme) */
+:root {
+  --tile-bg:           #a8d5a2;
+  --tile-bg-alt:       #98c295;
+  --tile-revealed-bg:  #e6f3e6;
+}
+
+/* Theme overrides */
+.game-container.grass {
+  --tile-bg:          #a0d4a0;
+  --tile-bg-alt:      #99c999;
+  --tile-revealed-bg: #e6f3e6;
+}
+
+.game-container.ocean {
+  --tile-bg:          #99d0d3;
+  --tile-bg-alt:      #92c9cc;
+  --tile-revealed-bg: #d4f1f9;
+}
+
+.game-container.fire {
+  --tile-bg:          #f3aa7c;
+  --tile-bg-alt:      #eca374;
+  --tile-revealed-bg: #fde0c3;
 }
 
 /* General Page Layout */
 body {
-    background-color: #fff; /* plain white background */
-    font-family: Arial, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+  background-color: #fff;
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
-/* Container holding the tutorial */
+/* Tutorial page (teammate’s) */
 .tutorialContainer {
-    width: 400px;
-    padding: 20px;
-    background-color: #f9f9f9; /* light gray */
-    border: 2px solid #aaa; /* medium gray border */
-    border-radius: 10px;
-    text-align: center;
-}
-
-/* Header: "How to play" */
-.tutorialContainer h3 {
-    font-size: 1.5rem;
-    margin-bottom: 15px;
-    color: #000; /* black text */
-}
-
-/* Image area (Minesweeper grid placeholder) */
-.tutorialImage {
-    width: 100%;
-    border: 2px solid #ddd;
-    border-radius: 5px;
-    margin-bottom: 15px;
-}
-
-/* Description text under the image */
-.tutorialText {
-    font-size: 0.95rem;
-    color: #333; /* dark gray text */
-    margin-bottom: 15px;
-}
-
-/* Navigation dots */
-.tutorialDots {
-    display: flex;
-    justify-content: center;
-    gap: 5px;
-    margin-bottom: 10px;
-}
-
-.tutorialDots span {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background-color: #aaa; /* medium gray */
-}
-
-/* Arrows (Previous/Next) */
-.tutorialArrows {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 10px;
-}
-
-.tutorialArrows button {
-    border: 1px solid #999;
-    background-color: #eee; /* light gray button */
-    padding: 5px 10px;
-    border-radius: 4px;
-    cursor: pointer;
-    color: #000;
-}
-
-.tutorialArrows button:hover {
-    background-color: #ddd; /* slightly darker gray on hover */
-}
-
-/* --- Minesweeper styles --- */
-.game-container,
-.home-container,
-.tutorial-container {
+  width: 400px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border: 2px solid #aaa;
+  border-radius: 10px;
   text-align: center;
 }
+.tutorialContainer h3 {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  color: #000;
+}
 
+/* Shared containers */
+.home-container,
+.tutorial-container,
+.game-container {
+  text-align: center;
+  position: relative;
+  padding-top: 2.5rem;
+}
+
+/* Home links */
+.home-container a {
+  margin: 0 0.5rem;
+}
+
+/* “How to play” link in Game */
+.tutorial-link {
+  position: absolute;
+  top: 0.75rem;
+  right: 1rem;
+  text-decoration: none;
+  color: #444;
+}
+.tutorial-link:hover {
+  color: #000;
+}
+
+/* Controls row */
 .controls {
   margin: 1rem 0;
   display: flex;
@@ -96,15 +90,44 @@ body {
   justify-content: center;
 }
 
+/* Board wrapper & overlay */
+.board-wrapper {
+  display: inline-block;
+  position: relative;
+}
+.overlay {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(255,255,255,0.9);
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  font-size: 1.5rem;
+  z-index: 10;
+  pointer-events: none;
+}
+
+/* Board layout */
 .board {
   display: inline-block;
   padding: 5px;
 }
-
 .board-row {
   display: flex;
 }
 
+/* Checkerboard pattern for *covered* tiles */
+.board-row:nth-child(even) .tile:not(.revealed):nth-child(even),
+.board-row:nth-child(odd)  .tile:not(.revealed):nth-child(odd) {
+  background-color: var(--tile-bg-alt);
+}
+.board-row:nth-child(even) .tile:not(.revealed):nth-child(odd),
+.board-row:nth-child(odd)  .tile:not(.revealed):nth-child(even) {
+  background-color: var(--tile-bg);
+}
+
+/* Tile base styles & smooth animation reveal yuh */
 .tile {
   width: 30px;
   height: 30px;
@@ -115,13 +138,16 @@ body {
   font-size: 0.9rem;
   cursor: pointer;
   user-select: none;
-  transition: background-color 0.2s ease;
+  transition: background-color 0.3s ease;
 }
 
+/* Revealed tile */
 .tile.revealed {
+  background-color: var(--tile-revealed-bg);
   cursor: default;
 }
 
+/* Flagged */
 .tile.flagged {
   color: red;
 }

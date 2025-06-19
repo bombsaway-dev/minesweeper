@@ -3,21 +3,18 @@ import { useTheme } from '../context/ThemeContext';
 
 export default function Tile({ tile, onClick, onRightClick }) {
   const { theme } = useTheme();
-  const style = {
-    backgroundColor: tile.isRevealed
-      ? theme.tileRevealedBg
-      : theme.tileBg
-  };
+
   const classes = [
     'tile',
-    tile.isRevealed   && 'revealed',
-    tile.isFlagged    && 'flagged'
-  ].filter(Boolean).join(' ');
+    tile.isRevealed && 'revealed',
+    tile.isFlagged  && 'flagged'
+  ]
+    .filter(Boolean)
+    .join(' ');
 
   return (
     <div
       className={classes}
-      style={style}
       onClick={() => onClick(tile.row, tile.col)}
       onContextMenu={e => {
         e.preventDefault();
