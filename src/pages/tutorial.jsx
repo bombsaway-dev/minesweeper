@@ -44,7 +44,7 @@ function Tutorial() {
         <Carousel.Item>
             <img src={tut4} alt="" className = "carouselImg" />
             <div className="custom-caption">
-                <p>Left clicking a bomb ends the game. Flag all the bombs to win!</p>
+                <p>Left clicking a bomb ends the game. Clear all the safe tiles to win!</p>
             </div>
         </Carousel.Item>
     </Carousel>
