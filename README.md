@@ -1,51 +1,38 @@
-# Bombs Away
+# 💣 Bombs Away
 
-A minimalist React-based Minesweeper clone featuring smooth tile animations and a theme switcher for different backgrounds (grass, ocean, fire, etc.).
+Welcome to **Bombs Away**, a fresh take on the classic Minesweeper with smooth animations, playful themes, and a modern minimalist vibe. Pick your battlefield—grass, ocean, or fire—and prove you’ve got what it takes to clear the board!
 
-## Features
+---
 
-* Three difficulty levels:
+## 🎮 How to Play
 
-  * **Easy** (9×9)
-  * **Medium** (16×16)
-  * **Hard** (16×30)
-* Theme switcher for custom bomb, flag, and background styles
-* Smooth reveal and flag animations
-* Reset button to restart the game at any time
+1. **Click a tile** to reveal it.  
+2. **Right-click** to plant a flag where you think a bomb is hiding.  
+3. Numbers show how many bombs are touching that tile—use them to work out safe areas.  
+4. Reveal all safe tiles to **win**; click a bomb and **boom**, you lose!
 
-## Getting Started
+---
 
-### Prerequisites
+## ⚙️ Features
 
-* Node.js (v14 or later)
-* npm (v6 or later)
+- **Three difficulties**  
+  - Easy: 9×9, 10 bombs  
+  - Medium: 16×16, 40 bombs  
+  - Hard: 16×30, 99 bombs  
+- **First-click safe**: Your very first move never lands on a bomb—guaranteed flood-fill reveal!  
+- **Fluid animations**: Tiles flip with a smooth fade-out so the board never feels janky.  
+- **Themed boards**:  
+  - Grass (💣 / 🚩)  
+  - Ocean (🐚 / ⚓)  
+  - Fire  (🔥 / ☢️)  
+- **Built-in timer**: Tracks your speed down to centiseconds—race your best time!  
+- **Win / lose overlay**: Celebratory fireworks or dramatic boom message.
 
-### Installation & Running
+---
 
-```bash
-npm install
-npm start
-```
+## 🚀 Quick Start
 
-Visit `http://localhost:3000` in your browser to play.
-
-## Project Structure
-
-```
-public/        Static HTML & assets
-src/
-  pages/       `home.jsx`, `tutorial.jsx`
-  App.jsx      Route definitions
-  index.jsx    Application entry point
-  style.css    Global styles
-```
-
-## Available Scripts
-
-* `npm start` – Start development server
-* `npm run build` – Create production build
-* `npm test` – Run tests
-
-## License
-
-This project is open source and available under the MIT License.
+1. **Clone** this repo  
+   ```bash
+   git clone https://github.com/your-username/bombs-away.git
+   cd bombs-away
