@@ -12,7 +12,7 @@ export default function Tutorial() {
   const navigate = useNavigate();
   const slides = [
     { img: tut1, text: 'Bombs are hidden on the map! Right-click to flag a square you think has a bomb.' },
-    { img: tut2, text: 'Safe squares have a number—how many bombs touch that tile.' },
+    { img: tut2, text: 'Safe squares have a number - how many bombs touch that tile.' },
     { img: tut3, text: 'Left-click a safe square to reveal its number.' },
     { img: tut4, text: 'Clicking a bomb ends the game. Reveal all safe tiles to win!' },
   ];
