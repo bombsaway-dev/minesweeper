@@ -1,56 +1,64 @@
 import React, { useState } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import { useNavigate } from 'react-router-dom';
+import { useTheme } from '../context/ThemeContext';
 import '../style.css';
 import tut1 from '../assets/tut-ss-1.png';
 import tut2 from '../assets/tut-ss-2.jpg';
 import tut3 from '../assets/ss-tut-3.png';
 import tut4 from '../assets/tut-ss-4.jpg';
 
+export default function Tutorial() {
+  const { themeName } = useTheme();
+  const navigate = useNavigate();
+  const slides = [
+    { img: tut1, text: 'Bombs are hidden on the map! Right-click to flag a square you think has a bomb.' },
+    { img: tut2, text: 'Safe squares have a number—how many bombs touch that tile.' },
+    { img: tut3, text: 'Left-click a safe square to reveal its number.' },
+    { img: tut4, text: 'Clicking a bomb ends the game. Reveal all safe tiles to win!' },
+  ];
+  const [idx, setIdx] = useState(0);
+  const [closing, setClosing] = useState(false);
 
-import { Link } from "react-router-dom";
-import { Carousel, Container, Row, Col, Nav, Navbar, Button, Alert, Breadcrumb, Card, Form } from 'react-bootstrap';
+  const prev = () => setIdx(i => (i - 1 + slides.length) % slides.length);
+  const next = () => setIdx(i => (i + 1) % slides.length);
 
-
-function Tutorial() {
-    const [index, setIndex] = useState(0);
-    const handleSelect = (selectedIndex) => {
-        setIndex(selectedIndex);
-    };
+  const handleClose = () => {
+    setClosing(true);
+    setTimeout(() => navigate(-1), 500);
+  };
 
   return (
-    <div className = "tutorialContainer">
-    
-    <Card className = "tutorialCard">
-        <h3>How to play</h3>
-    <Carousel activeIndex={index} onSelect={handleSelect} className="carousel">
-        <Carousel.Item>
-            <img src={tut1} alt="" className = "carouselImg" />
-            <div className="custom-caption">
-                <p>Bombs are hidden on the map! Right click to flag a square you think has a bomb.</p>
+    <div className={themeName}>
+      <div className={`tutorialOverlay ${themeName} ${closing ? 'fade-out' : ''}`}>
+        <div className="tutorialCard">
+          <button className="tutorialClose" onClick={handleClose}>×</button>
+          <h3>How to play</h3>
+
+          <div className="tutorialBody">
+            <div
+              className="slidesContainer"
+              style={{ transform: `translateX(-${idx * 100}%)` }}
+            >
+              {slides.map((s, i) => (
+                <div key={i} className="slide">
+                  <img src={s.img} alt={`step ${i + 1}`} className="tutorialBoard" />
+                  <p className="tutorialText">{s.text}</p>
+                </div>
+              ))}
             </div>
-        </Carousel.Item>
-        <Carousel.Item>
-            <img src={tut2} alt="" className = "carouselImg" />
-            <div className="custom-caption">
-                <p>Safe squares have a number, meaning the square is touching that number of bombs.</p>
+          </div>
+
+          <div className="tutorialFooter">
+            <button className="tutArrow" onClick={prev}>‹</button>
+            <div className="tutDots">
+              {slides.map((_, i) => (
+                <span key={i} className={i === idx ? 'active' : ''} />
+              ))}
             </div>
-        </Carousel.Item>
-        <Carousel.Item>
-            <img src={tut3} alt="" className = "carouselImg" />
-            <div className="custom-caption">
-                <p>Left click a safe square to declare it safe and to reveal its number.</p>
-            </div>
-        </Carousel.Item>
-        <Carousel.Item>
-            <img src={tut4} alt="" className = "carouselImg" />
-            <div className="custom-caption">
-                <p>Left clicking a bomb ends the game. Clear all the safe tiles to win!</p>
-            </div>
-        </Carousel.Item>
-    </Carousel>
-    </Card>
+            <button className="tutArrow" onClick={next}>›</button>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
-
-export default Tutorial;

@@ -1,17 +1,32 @@
-import React, { createContext, useState, useContext } from 'react';
-import { themes } from '../themes';
+import React, { createContext, useState, useContext, useEffect } from 'react';
 
 const ThemeContext = createContext();
-export const ThemeProvider = ({ children }) => {
-  const [themeName, setThemeName] = useState('grass');
+
+export function ThemeProvider({ children }) {
+  const [themeName, setThemeName] = useState(
+    () => localStorage.getItem('theme') || 'grass'
+  );
+
+  useEffect(() => {
+    localStorage.setItem('theme', themeName);
+  }, [themeName]);
+
   return (
-    <ThemeContext.Provider value={{
-        theme: themes[themeName],
+    <ThemeContext.Provider
+      value={{
         themeName,
-        setThemeName
-      }}>
+        setTheme: setThemeName
+      }}
+    >
       {children}
     </ThemeContext.Provider>
   );
-};
-export const useTheme = () => useContext(ThemeContext);
+}
+
+export function useTheme() {
+  const ctx = useContext(ThemeContext);
+  if (!ctx) {
+    throw new Error('useTheme must be inside ThemeProvider');
+  }
+  return ctx;
+}
