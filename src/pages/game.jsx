@@ -115,7 +115,7 @@ export default function Game() {
       <header className="game-header">
         <ThemeSwitcher />
         <Link to="/" className="game-title-link">
-          <h1>Bombs Away</h1>
+          <h1>Bombs Away!</h1>
         </Link>
         <DifficultySelector
           difficulty={difficulty}
