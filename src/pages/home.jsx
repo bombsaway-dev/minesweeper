@@ -60,18 +60,16 @@ export default function Home() {
       <div className="logo-huge" tabIndex={0}>
         Bombs Away!
       </div>
-      <div className="home-links">
+      <div className="home-links d-flex flex-row justify-content-center align-items-center gap-4 mt-4">
         <Link
-          className="home-link"
+          className="btn btn-primary px-4 py-2 fw-bold fs-5 text-center"
           to="/tutorial"
-          style={{ background: theme.buttonBg, color: theme.buttonText }}
         >
           How to play
         </Link>
         <Link
-          className="home-link"
+          className="btn btn-primary px-4 py-2 fw-bold fs-5 text-center"
           to="/game"
-          style={{ background: theme.buttonBg, color: theme.buttonText }}
         >
           Play Game
         </Link>
