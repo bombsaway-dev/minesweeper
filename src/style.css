@@ -57,10 +57,11 @@ body.app-body {
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  height: 100vh;
+  min-height: 100vh;
   padding: 1rem 0;
   position: relative;
   z-index: 1;
+  overflow:hidden;
 }
 
 .game-header {
@@ -517,9 +518,6 @@ body.app-body {
   color: #ff7043;
 }
 
-.game-layout {
-  overflow: hidden;
-}
 
 .emoji-rain-container.game-rain-bg {
   pointer-events: none;
